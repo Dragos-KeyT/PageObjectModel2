@@ -45,12 +45,14 @@ public class SeleniumWrappers extends BaseTest{
 	
 	
 	public void click(By locator) {
-		
+		Log.info("started method <click> on locator " + locator.toString());
 		WebElement element = returnWebElement(locator);
 		try {
 			waitForElementToBeClickable(locator);
 			element.click();
+		Log.info("click() was sucessfull on locator " + locator.toString());
 		}catch (StaleElementReferenceException e) {
+			Log.error("catched <StaleElementReferenceException> on locator " + locator.toString());
 			element = returnWebElement(locator);
 			element.click();
 		}catch(Exception e) {
@@ -63,6 +65,7 @@ public class SeleniumWrappers extends BaseTest{
 	
 	public void waitForElementToBeClickable(By locator) {
 		try {
+			Log.info("started method <waitForElementToBeClickable> on locator " +locator.toString());
 			WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
 			wait.until(ExpectedConditions.elementToBeClickable(locator));
 			
@@ -74,11 +77,13 @@ public class SeleniumWrappers extends BaseTest{
 	
 	
 	public void sendKeys(By locator, String text) {
-		
+		Log.info("strated method <sendKeys()> on locator " + locator.toString());
 		WebElement element = returnWebElement(locator);
 		waitForElementToBeVisible(locator);
 		try {
+			Log.info("called method <clear()> on locator " + locator.toString());
 			element.clear();
+			Log.info("called method <sendKeys()> on locator " + locator.toString());
 			element.sendKeys(text);			
 		}catch(Exception e) {
 			//Log.error(e.getMessage());
@@ -95,11 +100,15 @@ public class SeleniumWrappers extends BaseTest{
 	
 	
 	public void waitForElementToBeVisible(By locator) {
-		
+		Log.info("started method <waitForElementToBeVisible> on locator " + locator.toString());
 		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
 		wait.until(ExpectedConditions.visibilityOfElementLocated(locator));
 		
 	}
 	
+	
+	public boolean elementIsDisplayed(By locator) {
+		return driver.findElement(locator).isDisplayed();
+	}
 	
 }
