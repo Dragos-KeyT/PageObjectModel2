@@ -10,7 +10,6 @@ public class TestNgListener implements IResultListener{
 
 	public void onTestStart(ITestResult result) {
 		Log.info("+++++++++++++++++++++++++++++++++++++++++++++");
-		Log.info("Browser " + Driver.runningBrowser.get());
 		Log.info("Started method " + result.getMethod().getMethodName());
 		String timestamp = new SimpleDateFormat("yyyy.MM.dd.hh.mm.ss").format(new Date());
 		Log.info("Started time :" + timestamp);
@@ -19,7 +18,6 @@ public class TestNgListener implements IResultListener{
 
 	public void onTestSuccess(ITestResult result) {
 		Log.info("+++++++++++++++++++++++++++++++++++++++++++++");
-		Log.info("Browser " + Driver.runningBrowser.get());
 		Log.info("Passed test case " + result.getMethod().getMethodName());
 		String timestamp = new SimpleDateFormat("yyyy.MM.dd.hh.mm.ss").format(new Date());
 		Log.info("Pass time :" + timestamp);
