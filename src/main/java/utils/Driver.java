@@ -18,13 +18,13 @@ public class Driver {
 		
 		if(browser.equalsIgnoreCase("chrome")) {
 			
-			driver = new ChromeDriver();
+			driver = new ChromeDriver(getChromeOptions());
 			runningBrowser.set( "Chrome");
 			return driver;
 		
 		}else if(browser.equalsIgnoreCase("firefox")) {
 			runningBrowser.set( "Firefox");			
-			driver =  new FirefoxDriver();
+			driver =  new FirefoxDriver(getFirefoxOptions());
 			return driver;
 	
 		}else if(browser.equals("edge")) {
