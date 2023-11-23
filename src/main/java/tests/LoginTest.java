@@ -18,7 +18,7 @@ public class LoginTest extends BaseTest{
 		
 		app.click(app.menu.myAccountLink);
 		app.myAccount.loginInApp(user, pass);
-		assertTrue(app.elementIsDisplayed(app.myAccount.errorMsg));
+		assertTrue(app.elementIsDisplayed(app.myAccount.successMsg));
 		ScreenShots.screenshot(driver);
 		app.click(app.myAccount.logoutButton);
 	}
@@ -30,8 +30,6 @@ public class LoginTest extends BaseTest{
 		app.click(app.menu.myAccountLink);
 		app.myAccount.loginInApp("usergresit", "passgresit");
 		assertTrue(app.elementIsDisplayed(app.myAccount.errorMsg));
-
-	
 	
 	}
 	
